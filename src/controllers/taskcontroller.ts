@@ -18,8 +18,6 @@ export const getTaskByID = async (req: Request, res: Response) => {
   }
 };
 export const createTask = async (req: Request, res: Response) => {
-  console.log(req.body);
-
   try {
     const task = new Task(req.body);
     await task.save();
@@ -39,10 +37,9 @@ export const deleteTask = async (req: Request, res: Response): Promise<any> => {
       return res.status(404).json({ message: "Task not found" });
     }
 
-    return res.json({ message: "Task deleted successfully" });
+    return res.status(201).json({ message: "Task deleted successfully" });
   } catch (error) {
-    console.error("Error deleting task:", error);
-    res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({ message: "Error Deleting Task" });
   }
 };
 
@@ -59,9 +56,9 @@ export const updateTask = async (req: Request, res: Response): Promise<any> => {
       return res.status(404).json({ message: "Task not found" });
     }
 
-    return res.json(updatedTask);
+    return res.status(201).json(updatedTask);
   } catch (error) {
     console.error("Error updating task:", error);
-    res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({ message: "Error Updating task" });
   }
 };
