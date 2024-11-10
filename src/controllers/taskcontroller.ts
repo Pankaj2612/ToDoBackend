@@ -19,6 +19,8 @@ export const getTaskByID = async (req: Request, res: Response) => {
 };
 export const createTask = async (req: Request, res: Response) => {
   try {
+    console.log(req.body);
+
     const task = new Task(req.body);
     await task.save();
     res.status(201).json(task);

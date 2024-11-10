@@ -7,7 +7,7 @@ const TaskSchema = new Schema({
   category: {
     type: String,
     required: true,
-    enum: ["To Do", "On Progress ", "Timeout", "Done"],
+    enum: ["To Do", "On Progress", "Done"],
   },
   deadline: { type: Date, required: true },
   priority: { type: String, required: true, enum: ["Low", "High", "Medium"] },
